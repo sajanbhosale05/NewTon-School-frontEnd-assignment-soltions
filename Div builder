@@ -1,0 +1,39 @@
+**Problem Statement**: In this project , we will be making a app which creates
+div. All the html markup is already given for you. #div-id-input will be the id
+of the div we will create #div-content-input will be the content inside the div
+#div-height-input will be the height of the div in pixels #div-width-input will
+be the width of the div in pixels When user clicks #create-div-btn, create a div
+with the above supplied parameters and append it inside #div-holder. Also
+whenever you make a div, it will also have a class="my-div" **Solution**:
+**HTML**:
+<form onsubmit="">
+  <label>Enter Div id</label>
+  <input id="div-id-input" type="text" />
+  <br />
+  <label>Enter div text content</label>
+  <input id="div-content-input" type="text" />
+  <br />
+  <label>Enter div height in px</label>
+  <input id="div-height-input" type="number" value="50" />
+  <br />
+  <label>Enter div width in px</label>
+  <input id="div-width-input" type="number" value="50" />
+  <br />
+  <button id="create-div-btn">Add Div</button>
+</form>
+<br />
+<main id="div-holder"></main>
+
+**CSS**: .my-div{ background-color: red; } **JavaScript**: // javascript code
+goes here const id = document.querySelector("#div-id-input"); const content =
+document.querySelector("#div-content-input"); const
+height=document.querySelector("#div-height-input"); const width
+=document.querySelector("#div-width-input"); const btn
+=document.querySelector("#create-div-btn"); const holder
+=document.querySelector("#div-holder");
+btn.addEventListener("click",function(e){ e.preventDefault(); let a = id.value;
+let b = content.value; let c =height.value; let d = width.value; let gl =
+document.createElement("div"); gl.className="my-div"; gl.style.width = d+"px";
+gl.style.height = c+"px"; gl.innerText = b; gl.id = a; holder.appendChild(gl);
+}) **TestCases**: Create div-2 **Passed** Create div-1 **Passed** All required
+input elements are present **Passed**
