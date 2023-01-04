@@ -1,0 +1,131 @@
+**Problem Statement**:
+One of the very important features of javascript is Timing events. There are javaScript functions which after a given time execute a callback function. We will utilize them to make our own stopwatch.
+Acceptance Criteria
+This stopwatch should show passed hours, minutes and seconds.
+Format of the output Time string should be HH:MM:SS
+Render 3 buttons start, stop, pause.
+Stopwatch should start on click event of start button.
+Initially pause and stop button should be disabled. They should be enabled after stopwatch starts.
+start button should be disabled once the stopwatch starts.
+Initial time should be 00:00:00.
+Pause and stop button have the normal functionality to pause and stop the stopwatch.
+When timer is entering pause state, change text of pause button to continue
+If the stopwatch is continued after a pause, change the text of continue button to pause(like before pause state)
+When stop button is clicked, restart the stopwatch (text 00:00:00, disabled pause, stop buttons and enable start button ).
+Stopwatch should not loose much time(if timer is paused after 0.5 sec then it should not loose that time and continue counting from 0.5 sec).
+Clear the timers
+
+<img src="https://d3dyfaf3iutrxo.cloudfront.net/thumbnail/assignment/question/86eed0097db844f18880f9356a678b04.png" alt="StopWatch">
+
+**Solution**:
+**HTML**:
+
+<!-- html code goes here -->
+<div id="time"></div>
+
+<button onclick="start()" id="start">start</button>
+
+<button onclick="pause()" id="pause">pause</button>
+
+<button onclick="stop()" id="stop">stop</button>
+
+**JavaScript**:
+function setTime() {
+
+timerDiv.innerText = (parseInt(time / 3600) < 10 ? "0" : "") + parseInt(time / 3600) + ":" + (parseInt((time / 60) % 60) < 10 ? "0" : "") + parseInt((time / 60) % 60) + ":" + (parseInt((time) % 60) < 10 ? "0" : "") + parseInt((time) % 60)
+
+}
+
+function start() {
+
+if (!timerOn) {
+
+timerId = setInterval(() => {
+
+time = time + 0.1;
+
+setTime();
+
+}, 100);
+
+document.getElementById('start').setAttribute('disabled', true)
+
+document.getElementById('stop').removeAttribute('disabled')
+
+document.getElementById('pause').removeAttribute('disabled')
+
+timerOn = true;
+
+}
+
+}
+
+function stop() {
+
+document.getElementById('start').removeAttribute('disabled')
+
+document.getElementById('pause').setAttribute('disabled', true)
+
+document.getElementById('pause').innerText = "pause"
+
+document.getElementById('stop').setAttribute('disabled', true)
+
+clearInterval(timerId)
+
+time = 0;
+
+setTime();
+
+timerOn = false;
+
+}
+
+function pause() {
+
+if (timerOn) {
+
+clearInterval(timerId)
+
+timerOn = false;
+
+document.getElementById('pause').innerText = "continue"
+
+}
+
+else {
+
+document.getElementById('pause').innerText = "pause"
+
+start()
+
+}
+
+}
+
+let time = 0;
+
+let timerOn = false;
+
+let timerDiv = document.getElementById('time')
+
+document.getElementById('pause').setAttribute('disabled', true)
+
+document.getElementById('stop').setAttribute('disabled', true)
+
+setTime()
+
+let timerId;
+
+**TestCases**:
+Should update the name of pause button **Passed**
+The timer should be robust and work as expected for a different combinations of start, pause, stop buttons. **Passed**
+Should increment hours. **Passed**
+Should increment minutes. **Passed**
+Should increment seconds. **Passed**
+Should render time in correct format **Passed**
+Should reset the timer when stop button is clicked **Passed**
+Should disable the button depending on the sequences of events. **Passed**
+Should only start the timer on click event of start button **Passed**
+Should render all the three button and initial time 00:00:00 **Passed**
+Should load site without any error **Passed**
+Should clear basic tests **Passed**
