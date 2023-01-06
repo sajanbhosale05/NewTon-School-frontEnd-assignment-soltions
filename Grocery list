@@ -1,0 +1,98 @@
+**Problem Statement**:
+One of the important features of a grocery list is the calculation of the Grand Total. Grand Total is just the sum of the price of all items.
+Details
+We have created a small version of a grocery list that consists of some times.
+
+The price of each is written in a tr element with a data attribute data-ns-test=price.
+
+There is a Total button your task is to add functionality to this button.
+
+On click event of this button, the function calcTotal is be executed
+
+Write a code in calcTotal to calculate the cost of all items and write it inside a row and append it to the table.
+
+The new row should have two column one with Text Grand Total and other should contain the total price along with a attribute data-ns-test=grandTotal for example <tr><td>Grand Total</td><td data-ns-test="grandTotal">303</td></tr>
+
+If calcTotal is executed for the second time you have to update the last row with the new grand total price .
+
+Follow the example given at the end.
+
+Acceptance criteria
+
+Correct Grand Total.
+
+Removal of previous Grand Total.
+
+**Solution**:
+**HTML**:
+
+<!-- Do not edit this you need to use JS to scrap prices and display their sum -->
+
+    <h1>Grocery List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item-1</td>
+                <td data-ns-test="price" class="item">100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Item-2</td>
+                <td data-ns-test="price" class="item">200</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Item-3</td>
+                <td data-ns-test="price" class="item">2</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Item-4</td>
+                <td data-ns-test="price" class="item">1</td>
+            </tr>
+        </tbody>
+    </table>
+    <button onClick='calcTotal()'>Total</button>
+
+**JavaScript**:
+function calcTotal() {
+const gt_row = document.getElementById("grand_total_row");
+if (gt_row) {
+gt_row.remove();
+}
+
+    const new_gt_row = document.createElement("tr");
+    new_gt_row.id = "grand_total_row";
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    td1.innerHTML = "Grand Total";
+    td2.setAttribute("data-ns-test", "grandTotal");
+
+    const price_cells = document.querySelectorAll('td[data-ns-test="price"]');
+    let total = 0;
+    for(let i = 0; i < price_cells.length; i++) {
+        total += parseInt(price_cells[i].innerHTML);
+    }
+    td2.innerHTML = total;
+
+    new_gt_row.appendChild(td1);
+    new_gt_row.appendChild(td2);
+    const table = document.querySelector("tbody");
+    table.appendChild(new_gt_row);
+
+}
+
+**TestCases**:
+If Grand Total is calculated multiple times then previous total should be removed from dom. **Passed**
+Should append the Grand Total at the end of the table along with data attribute **Passed**
+Should print the correct value of Grand Total **Passed**
+HTMl structure should not be altered. **Passed**
+page should load successfully. **Passed**
