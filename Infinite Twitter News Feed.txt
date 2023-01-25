@@ -1,0 +1,46 @@
+**Problem Statement**:
+Today we will design infinite scroll
+
+Infinite scrolling is a web-design technique that keeps loading content as the user scrolls down the page, eliminating the need for pagination. The success of infinite scrolling on social media sites such as Twitter has made this technique popular.
+Task
+Make any simple web-application that has vertical infinite scrolling functionality.
+Note: Add new elements directly inside the body tag.
+
+
+**Solution**:
+**HTML**:
+<!-- html code goes here -->
+<style>
+    div {
+        height: 200px;
+        border: 2px solid brown;
+        background-color: yellow;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+
+**CSS**:
+
+
+
+**JavaScript**:
+// javascript code goes here
+const body = document.getElementsByTagName("body")[0];
+function addNDivs(n) {
+    for(let i = 0; i < n; i++) {
+        const new_div = document.createElement("div");
+        new_div.innerHTML = i;
+        body.appendChild(new_div);
+    }
+}
+
+addNDivs(3);
+body.addEventListener('scrollend', () => {addNDivs(3)});
+
+
+**TestCases**:
+Not Loaded Infinite content  **Passed**
+Scrolling to bottom  **Passed**

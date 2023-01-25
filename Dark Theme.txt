@@ -1,0 +1,77 @@
+**Problem Statement**:
+Have you seen the different themes of the editors? There's a light theme, and there's a dark theme. We will be building today a toggle theme functionality where we will click a button to change the theme from dark to light.
+The HTML and CSS are already provided to you.
+
+The p element should have the text I am a Newton School student, ready to become an awesome full stack developer
+
+The main div should have id="app" and class="day"
+
+The button should have id="swap" and class="button_day"
+
+Write the swapTheme function to change the classes of the div with id="app" and the button with id="swap"
+
+
+
+**Solution**:
+**HTML**:
+<div class="day" id="app">
+    <div>
+        <p>I am a Newton School student, ready to become an awesome full stack developer</p>
+        <button id="swap" class="button_day" onclick="swapTheme()">Toggle theme</button>
+    </div>
+</div>
+
+**CSS**:
+.day {
+    background-color: white;
+    color: black;
+}
+
+.night {
+    background-color: black;
+    color: gold;
+}
+
+.button_night {
+    background-color: darkblue;
+    color: white;
+}
+
+.button_day{
+    background-color: white;
+    color: black;
+}
+
+html, body {
+    margin: 0px;
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+    padding: 10px;
+}
+
+
+**JavaScript**:
+function swapTheme() {
+    let nightMode= document.getElementById('app');
+    let btnNight= document.getElementById('swap');
+    //nightMode.setAttribute("class",".night");
+    if(nightMode.className==='day'){
+        nightMode.className='night';
+        btnNight.className='button_night';
+
+    }else{
+        nightMode.className='day';
+        btnNight.className='button_day';
+    }
+}
+
+
+**TestCases**:
+Checking that theme change happens on button click  **Passed**
+Checking required id and class for button  **Passed**
+Checking required id and class for div  **Passed**
+Checking text  **Passed**
+Running test cases **Passed**

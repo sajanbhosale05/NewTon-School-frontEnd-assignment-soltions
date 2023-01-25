@@ -1,0 +1,37 @@
+**Problem Statement**:
+You are building the game Hot or Cold. In this game, the computer generates a random number and the user guesses the number. If the guess is close to the number, the computer replies with "Hot" and if the guess is far from the generated number, the computer replies with "Cold".
+Step-1 of the game is to learn to generate random numbers by the computer. So let's learn to do that.
+You can use Math.random() for generation of Random numbers.
+
+Generate random whole numbers in a range JS.
+
+Make a p tag with id="main" and content I am learning to generate random number. I will be able to handle randomness in any of my applications that needs it. Press the button to get a random number.
+
+Make a button with id="btn" which on click renders a random whole number each time between -20 & 20.
+
+Make a p tag with id="num" where the random number is rendered. Initially, the p tag should contain an empty string.
+
+
+**Solution**:
+**HTML**:
+<p id="main">I am learning to generate random number. I will be able to handle randomness in any of my applications that needs it. Press the button to get a random number.</p>
+
+<button id="btn" onclick="displayRandomNumber()">Click Me!!</button>
+
+<p id="num"></p>
+
+**CSS**:
+No CSS code for this Assignment.
+
+
+**JavaScript**:
+function displayRandomNumber(){
+    let random=Math.floor(Math.random()*40.999)-20;
+    let para=document.getElementById('num');
+    para.innerText=random;
+}
+
+
+**TestCases**:
+Check for randomness **Passed**
+Initial setup **Passed**
